@@ -1,4 +1,4 @@
-
+This text is for the purpose of testing Git and GitHub
 
 # Inhaltsverzeichnis
 - [Anleitung zur Installation von ST-Link](#anleitung-zur-installation-von-st-Link)
