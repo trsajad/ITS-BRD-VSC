@@ -1,0 +1,11 @@
+<map id="Src/scanner.c" name="Src/scanner.c">
+<area shape="rect" id="Node000001" title="This module implements a simple scanner for keypad input." alt="" coords="151,5,258,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,79,89,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="180,33,86,75,84,71,178,28"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="113,79,192,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="198,33,171,69,167,66,194,29"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="216,79,297,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="215,29,242,66,238,69,211,33"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="321,79,392,104"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="230,28,321,70,319,75,228,33"/>
+</map>

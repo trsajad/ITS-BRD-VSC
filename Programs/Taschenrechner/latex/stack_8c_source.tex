@@ -1,0 +1,59 @@
+\doxysection{stack.\+c}
+\hypertarget{stack_8c_source}{}\label{stack_8c_source}\index{Src/stack.c@{Src/stack.c}}
+\mbox{\hyperlink{stack_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}stack.h"{}}}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}err\_num.h"{}}}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00010}00010\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00012}\mbox{\hyperlink{stack_8c_a0592dba56693fad79136250c11e5a7fe}{00012}}\ \textcolor{preprocessor}{\#define\ MAX\_SIZE\ 100}}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00014}\mbox{\hyperlink{structStack}{00014}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00015}\mbox{\hyperlink{structStack_a02a67b2234e522c7e8df16324a30a11b}{00015}}\ \ \ \ \ \textcolor{keywordtype}{int}\ array[\mbox{\hyperlink{stack_8c_a0592dba56693fad79136250c11e5a7fe}{MAX\_SIZE}}];}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00016}\mbox{\hyperlink{structStack_ad62fb36816185f3eef3a6f735a61f54a}{00016}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structStack_ad62fb36816185f3eef3a6f735a61f54a}{top}};}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00017}00017\ \}\ \mbox{\hyperlink{structStack}{Stack}};}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00019}\mbox{\hyperlink{stack_8c_aa799f9621bf922bd60dfd67d98d2d1b3}{00019}}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{structStack}{Stack}}\ \mbox{\hyperlink{stack_8c_aa799f9621bf922bd60dfd67d98d2d1b3}{stack}}\ =\ \{.\mbox{\hyperlink{structStack_ad62fb36816185f3eef3a6f735a61f54a}{top}}\ =\ -\/1\};}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00021}\mbox{\hyperlink{stack_8c_a8b05ea3dac25891bc2e2c0b607515994}{00021}}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{stack_8c_a8b05ea3dac25891bc2e2c0b607515994}{isEmpty}}(\textcolor{keywordtype}{void})\ \{}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00022}00022\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{stack_8c_aa799f9621bf922bd60dfd67d98d2d1b3}{stack}}.\mbox{\hyperlink{structStack_ad62fb36816185f3eef3a6f735a61f54a}{top}}\ ==\ -\/1;}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00023}00023\ \}}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00025}\mbox{\hyperlink{stack_8c_a235c50fd422039cb57765f6b98aae110}{00025}}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{stack_8c_a235c50fd422039cb57765f6b98aae110}{isFull}}(\textcolor{keywordtype}{void})\ \{}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00026}00026\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{stack_8c_aa799f9621bf922bd60dfd67d98d2d1b3}{stack}}.\mbox{\hyperlink{structStack_ad62fb36816185f3eef3a6f735a61f54a}{top}}\ ==\ (\mbox{\hyperlink{stack_8c_a0592dba56693fad79136250c11e5a7fe}{MAX\_SIZE}}\ -\/\ 1);}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00027}00027\ \}}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00029}\mbox{\hyperlink{stack_8c_a1e033a50a265d54aa80d05aa0b6026b9}{00029}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{stack_8c_a1e033a50a265d54aa80d05aa0b6026b9}{stackPush}}(\textcolor{keywordtype}{int}\ value)\ \{}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00030}00030\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{stack_8c_a235c50fd422039cb57765f6b98aae110}{isFull}}())\ \{\ \textcolor{keywordflow}{return}\ OVERFLOW\_ERR;\ \}}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00032}00032\ \ \ \ \ \mbox{\hyperlink{stack_8c_aa799f9621bf922bd60dfd67d98d2d1b3}{stack}}.\mbox{\hyperlink{structStack_ad62fb36816185f3eef3a6f735a61f54a}{top}}++;}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00033}00033\ \ \ \ \ \mbox{\hyperlink{stack_8c_aa799f9621bf922bd60dfd67d98d2d1b3}{stack}}.\mbox{\hyperlink{structStack_a02a67b2234e522c7e8df16324a30a11b}{array}}[\mbox{\hyperlink{stack_8c_aa799f9621bf922bd60dfd67d98d2d1b3}{stack}}.\mbox{\hyperlink{structStack_ad62fb36816185f3eef3a6f735a61f54a}{top}}]\ =\ value;}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00034}00034\ \ \ \ \ \textcolor{keywordflow}{return}\ EOK;}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00035}00035\ \}}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00037}\mbox{\hyperlink{stack_8c_a2a34345be060f7ee7114d120311015b1}{00037}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{stack_8c_a2a34345be060f7ee7114d120311015b1}{stackPop}}(\textcolor{keywordtype}{int}\ *value)\ \{}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00038}00038\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{stack_8c_a8b05ea3dac25891bc2e2c0b607515994}{isEmpty}}())\ \{\ \textcolor{keywordflow}{return}\ UNDERFLOW\_ERR;\ \}}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00040}00040\ \ \ \ \ *value\ =\ \mbox{\hyperlink{stack_8c_aa799f9621bf922bd60dfd67d98d2d1b3}{stack}}.\mbox{\hyperlink{structStack_a02a67b2234e522c7e8df16324a30a11b}{array}}[\mbox{\hyperlink{stack_8c_aa799f9621bf922bd60dfd67d98d2d1b3}{stack}}.\mbox{\hyperlink{structStack_ad62fb36816185f3eef3a6f735a61f54a}{top}}];}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00041}00041\ \ \ \ \ \mbox{\hyperlink{stack_8c_aa799f9621bf922bd60dfd67d98d2d1b3}{stack}}.\mbox{\hyperlink{structStack_ad62fb36816185f3eef3a6f735a61f54a}{top}}-\/-\/;}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00042}00042\ \ \ \ \ \textcolor{keywordflow}{return}\ EOK;}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00043}00043\ \}}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00045}\mbox{\hyperlink{stack_8c_a6da4c685327dcbfa4e3ee63b7d73b44a}{00045}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{stack_8c_a6da4c685327dcbfa4e3ee63b7d73b44a}{stackPeek}}(\textcolor{keywordtype}{int}\ *value,\ \textcolor{keywordtype}{int}\ depth)\ \{}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00046}00046\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{stack_8c_a8b05ea3dac25891bc2e2c0b607515994}{isEmpty}}())\ \{\ \textcolor{keywordflow}{return}\ STACK\_EMPTY;\ \}}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00048}00048\ \ \ \ \ \textcolor{keywordtype}{int}\ index\ =\ \mbox{\hyperlink{stack_8c_aa799f9621bf922bd60dfd67d98d2d1b3}{stack}}.\mbox{\hyperlink{structStack_ad62fb36816185f3eef3a6f735a61f54a}{top}}\ -\/\ depth;}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00049}00049\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ (index\ <\ 0)\ ||\ (\mbox{\hyperlink{stack_8c_aa799f9621bf922bd60dfd67d98d2d1b3}{stack}}.\mbox{\hyperlink{structStack_ad62fb36816185f3eef3a6f735a61f54a}{top}}\ <\ index)\ )\ \{\ \textcolor{keywordflow}{return}\ UNEX\_INPUT\_ERR;\ \}}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00051}00051\ \ \ \ \ *value\ =\ \mbox{\hyperlink{stack_8c_aa799f9621bf922bd60dfd67d98d2d1b3}{stack}}.\mbox{\hyperlink{structStack_a02a67b2234e522c7e8df16324a30a11b}{array}}[index];}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00052}00052\ \ \ \ \ \textcolor{keywordflow}{return}\ EOK;}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00053}00053\ \}}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00055}\mbox{\hyperlink{stack_8c_a22d66993da450d75be66b82c9c9c85c4}{00055}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{stack_8c_a22d66993da450d75be66b82c9c9c85c4}{clearStack}}(\textcolor{keywordtype}{void})\ \{}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00056}00056\ \ \ \ \ \mbox{\hyperlink{stack_8c_aa799f9621bf922bd60dfd67d98d2d1b3}{stack}}.\mbox{\hyperlink{structStack_ad62fb36816185f3eef3a6f735a61f54a}{top}}\ =\ -\/1;}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00057}00057\ \}}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00059}00059\ \textcolor{comment}{//\ EOF}}
+
+\end{DoxyCode}

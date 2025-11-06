@@ -1,10 +1,17 @@
+/**
+  * @file   msg_handler.c
+  * @author René Rudzki, Sajad Nazari
+  * @brief  Modul zur Ausgabe von Nachrichten auf den Bildschirm
+  */
+
 #include "msg_handler.h"
 #include "display.h"
 #include "limits.h"
 #include "token.h"
+#include "err_num.h"
 #include "scanner.h"
 
-int sizeofInt(int value) {
+static int sizeofInt(int value) {
     int count = 2;    // Allocate for '\n' + '\0'
     if (value <= 0) { count++; }    // Allocate for '0' || '-'
     while (value != 0) {
@@ -51,17 +58,17 @@ void printNumber(int value) {
 
 void printMessage(int num) {
     switch (num) {
-        case 1:
+        case STACK_EMPTY:
             printStdout("Stack leer."); break;
-        case -1:
+        case OVERFLOW_ERR:
             printStdout("Stack Overflow!\n(Reset mit C)"); break;
-        case -2:
+        case UNDERFLOW_ERR:
             printStdout("Stack Underflow!\n(Reset mit C)"); break;
-        case -3:
+        case ARITHMETIC_ERR:
             printStdout("Arithmetic Overflow!\n(Reset mit C)"); break;
-        case -4:
+        case DIVIDE0_ERR:
             printStdout("Durch 0 geteilt!\n(So moege Sie der\nBlitz treffen.)"); break;
-        case -5:
+        case UNEX_INPUT_ERR:
             printStdout("Unexpected Input!\n(Reset mit C)");
     }
 }

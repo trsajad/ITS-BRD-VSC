@@ -4,19 +4,19 @@
 cmake_minimum_required(VERSION 3.5)
 
 file(MAKE_DIRECTORY
-  "D:/Dokumente/_HAW/Projekte/ITS-BRD-VSC/Programs/Taschenrechner/tmp/Taschenrechner.Debug+ITSboard"
-  "D:/Dokumente/_HAW/Projekte/ITS-BRD-VSC/Programs/Taschenrechner/tmp/1"
-  "D:/Dokumente/_HAW/Projekte/ITS-BRD-VSC/Programs/Taschenrechner/tmp/Taschenrechner.Debug+ITSboard"
-  "D:/Dokumente/_HAW/Projekte/ITS-BRD-VSC/Programs/Taschenrechner/tmp/Taschenrechner.Debug+ITSboard/tmp"
-  "D:/Dokumente/_HAW/Projekte/ITS-BRD-VSC/Programs/Taschenrechner/tmp/Taschenrechner.Debug+ITSboard/src/Taschenrechner.Debug+ITSboard-stamp"
-  "D:/Dokumente/_HAW/Projekte/ITS-BRD-VSC/Programs/Taschenrechner/tmp/Taschenrechner.Debug+ITSboard/src"
-  "D:/Dokumente/_HAW/Projekte/ITS-BRD-VSC/Programs/Taschenrechner/tmp/Taschenrechner.Debug+ITSboard/src/Taschenrechner.Debug+ITSboard-stamp"
+  "/home/lone_puppeteer/Dokumente/HAW-P/ITS-BRD-VSC/Programs/Taschenrechner/tmp/Taschenrechner.Debug+ITSboard"
+  "/home/lone_puppeteer/Dokumente/HAW-P/ITS-BRD-VSC/Programs/Taschenrechner/tmp/1"
+  "/home/lone_puppeteer/Dokumente/HAW-P/ITS-BRD-VSC/Programs/Taschenrechner/tmp/Taschenrechner.Debug+ITSboard"
+  "/home/lone_puppeteer/Dokumente/HAW-P/ITS-BRD-VSC/Programs/Taschenrechner/tmp/Taschenrechner.Debug+ITSboard/tmp"
+  "/home/lone_puppeteer/Dokumente/HAW-P/ITS-BRD-VSC/Programs/Taschenrechner/tmp/Taschenrechner.Debug+ITSboard/src/Taschenrechner.Debug+ITSboard-stamp"
+  "/home/lone_puppeteer/Dokumente/HAW-P/ITS-BRD-VSC/Programs/Taschenrechner/tmp/Taschenrechner.Debug+ITSboard/src"
+  "/home/lone_puppeteer/Dokumente/HAW-P/ITS-BRD-VSC/Programs/Taschenrechner/tmp/Taschenrechner.Debug+ITSboard/src/Taschenrechner.Debug+ITSboard-stamp"
 )
 
 set(configSubDirs )
 foreach(subDir IN LISTS configSubDirs)
-    file(MAKE_DIRECTORY "D:/Dokumente/_HAW/Projekte/ITS-BRD-VSC/Programs/Taschenrechner/tmp/Taschenrechner.Debug+ITSboard/src/Taschenrechner.Debug+ITSboard-stamp/${subDir}")
+    file(MAKE_DIRECTORY "/home/lone_puppeteer/Dokumente/HAW-P/ITS-BRD-VSC/Programs/Taschenrechner/tmp/Taschenrechner.Debug+ITSboard/src/Taschenrechner.Debug+ITSboard-stamp/${subDir}")
 endforeach()
 if(cfgdir)
-  file(MAKE_DIRECTORY "D:/Dokumente/_HAW/Projekte/ITS-BRD-VSC/Programs/Taschenrechner/tmp/Taschenrechner.Debug+ITSboard/src/Taschenrechner.Debug+ITSboard-stamp${cfgdir}") # cfgdir has leading slash
+  file(MAKE_DIRECTORY "/home/lone_puppeteer/Dokumente/HAW-P/ITS-BRD-VSC/Programs/Taschenrechner/tmp/Taschenrechner.Debug+ITSboard/src/Taschenrechner.Debug+ITSboard-stamp${cfgdir}") # cfgdir has leading slash
 endif()

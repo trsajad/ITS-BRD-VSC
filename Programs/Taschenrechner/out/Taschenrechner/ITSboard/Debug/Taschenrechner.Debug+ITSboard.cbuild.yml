@@ -1,5 +1,5 @@
 build:
-  generated-by: csolution version 2.11.0
+  generated-by: csolution version 2.12.0
   solution: ../../../../Taschenrechner.csolution.yml
   project: ../../../../Taschenrechner.cproject.yml
   context: Taschenrechner.Debug+ITSboard
@@ -336,6 +336,8 @@ build:
         - file: ../../../../Inc/operations.h
           category: header
         - file: ../../../../Inc/msg_handler.h
+          category: header
+        - file: ../../../../Inc/err_num.h
           category: header
     - group: Program/User/Src
       files:

@@ -23,7 +23,7 @@ rule CUSTOM_COMMAND
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = C:\Users\drago\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe --regenerate-during-build -SD:\Dokumente\_HAW\Projekte\ITS-BRD-VSC\Programs\Taschenrechner\tmp -BD:\Dokumente\_HAW\Projekte\ITS-BRD-VSC\Programs\Taschenrechner\tmp
+  command = /home/lone_puppeteer/.vcpkg/artifacts/2139c4c6/tools.kitware.cmake/3.28.4/bin/cmake --regenerate-during-build -S/home/lone_puppeteer/Dokumente/HAW-P/ITS-BRD-VSC/Programs/Taschenrechner/tmp -B/home/lone_puppeteer/Dokumente/HAW-P/ITS-BRD-VSC/Programs/Taschenrechner/tmp
   description = Re-running CMake...
   generator = 1
 
@@ -32,7 +32,7 @@ rule RERUN_CMAKE
 # Rule for cleaning all built files.
 
 rule CLEAN
-  command = C:\Users\drago\.vcpkg\artifacts\2139c4c6\tools.ninja.build.ninja\1.12.1\ninja.exe $FILE_ARG -t clean $TARGETS
+  command = /home/lone_puppeteer/.vcpkg/artifacts/2139c4c6/tools.ninja.build.ninja/1.12.1/ninja $FILE_ARG -t clean $TARGETS
   description = Cleaning all built files...
 
 
@@ -40,6 +40,6 @@ rule CLEAN
 # Rule for printing all primary targets available.
 
 rule HELP
-  command = C:\Users\drago\.vcpkg\artifacts\2139c4c6\tools.ninja.build.ninja\1.12.1\ninja.exe -t targets
+  command = /home/lone_puppeteer/.vcpkg/artifacts/2139c4c6/tools.ninja.build.ninja/1.12.1/ninja -t targets
   description = All primary targets available:
 

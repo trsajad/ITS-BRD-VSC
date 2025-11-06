@@ -1,8 +1,9 @@
 /**
   ******************************************************************************
   * @file    main.c
-  * @author  René Rudzki
-  * @brief   RPN Taschenrechner über Touch-Display des ITS-Boards.
+  * @author  René Rudzki, Sajad Nazari
+  * @brief   Implementierung eines RPN Taschenrechners
+  *			 über Touch-Display des ITS-Boards.
   ******************************************************************************
   */
 /* Includes ------------------------------------------------------------------*/
@@ -11,12 +12,13 @@
 #include "display.h"
 #include "scanner.h"
 #include "token.h"
+#include "err_num.h"
 #include "stack.h"
 #include "operations.h"
 #include "msg_handler.h"
 
 static T_token input = {UNEXPECTED, 0};
-static int state = 0;
+static int state = EOK;
 
 int main(void) {
 	initITSboard();    // Initialisierung des ITS-Boards	
@@ -31,7 +33,7 @@ int main(void) {
 				state = stackPush(input.val); break;
 			
 			case OVERFLOW:
-				state = -1; break;
+				state = OVERFLOW_ERR; break;
 			
 			case PLUS: case MINUS: case MULT: case DIV: case SWAP:
 				state = calculate(input.tok); break;
@@ -48,10 +50,10 @@ int main(void) {
 				clearStdout(); break;
 
 			case UNEXPECTED:
-				state = -5;
+				state = UNEX_INPUT_ERR;
 		}
 
-		if (state != 0) {
+		if (state != EOK) {
 			setErrMode();
 			printMessage(state);
 
@@ -59,7 +61,7 @@ int main(void) {
 
 			clearStack();
 			setNormalMode();
-			state = 0;
+			state = EOK;
 		}
 	}
 }

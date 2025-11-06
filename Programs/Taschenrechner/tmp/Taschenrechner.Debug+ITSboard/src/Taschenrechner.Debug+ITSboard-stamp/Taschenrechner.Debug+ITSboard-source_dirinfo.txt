@@ -4,6 +4,6 @@
 
 method=source_dir
 command=
-source_dir=D:/Dokumente/_HAW/Projekte/ITS-BRD-VSC/Programs/Taschenrechner/tmp/Taschenrechner.Debug+ITSboard
+source_dir=/home/lone_puppeteer/Dokumente/HAW-P/ITS-BRD-VSC/Programs/Taschenrechner/tmp/Taschenrechner.Debug+ITSboard
 work_dir=
 

@@ -1,0 +1,118 @@
+\doxysection{Src/scanner.c File Reference}
+\hypertarget{scanner_8c}{}\label{scanner_8c}\index{Src/scanner.c@{Src/scanner.c}}
+
+
+This module implements a simple scanner for keypad input.  
+
+
+{\ttfamily \#include "{}scanner.\+h"{}}\newline
+{\ttfamily \#include "{}display.\+h"{}}\newline
+{\ttfamily \#include "{}keypad.\+h"{}}\newline
+{\ttfamily \#include "{}token.\+h"{}}\newline
+Include dependency graph for scanner.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{scanner_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static char \mbox{\hyperlink{scanner_8c_a65736a84bdb175862ead50e9f7304eca}{next\+Char}} (void)
+\item 
+T\+\_\+token \mbox{\hyperlink{scanner_8c_af0762539b69857bb47bf0d827c9c0b38}{next\+Token}} (void)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This module implements a simple scanner for keypad input. 
+
+\begin{DoxyAuthor}{Author}
+Franz Korf, HAW Hamburg 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+Mar 2016 
+\end{DoxyDate}
+
+
+Definition in file \mbox{\hyperlink{scanner_8c_source}{scanner.\+c}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{scanner_8c_a65736a84bdb175862ead50e9f7304eca}\label{scanner_8c_a65736a84bdb175862ead50e9f7304eca} 
+\index{scanner.c@{scanner.c}!nextChar@{nextChar}}
+\index{nextChar@{nextChar}!scanner.c@{scanner.c}}
+\doxysubsubsection{\texorpdfstring{nextChar()}{nextChar()}}
+{\footnotesize\ttfamily static char next\+Char (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{scanner_8c_source_l00020}{20}} of file \mbox{\hyperlink{scanner_8c_source}{scanner.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordflow}{return}\ getKeyPadInput();}
+\DoxyCodeLine{00022\ \}}
+
+\end{DoxyCode}
+
+
+Referenced by \mbox{\hyperlink{scanner_8c_source_l00024}{next\+Token()}}.
+
+\Hypertarget{scanner_8c_af0762539b69857bb47bf0d827c9c0b38}\label{scanner_8c_af0762539b69857bb47bf0d827c9c0b38} 
+\index{scanner.c@{scanner.c}!nextToken@{nextToken}}
+\index{nextToken@{nextToken}!scanner.c@{scanner.c}}
+\doxysubsubsection{\texorpdfstring{nextToken()}{nextToken()}}
+{\footnotesize\ttfamily T\+\_\+token next\+Token (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{scanner_8c_source_l00024}{24}} of file \mbox{\hyperlink{scanner_8c_source}{scanner.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00025\ \ \ \ \textcolor{comment}{//\ This\ scanner\ needs\ a\ lookahead\ of\ 1\ to\ detect\ the\ end\ of\ a\ number\ token.}}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{comment}{//\ '\ '\ /\ ENTER\ will\ be\ handled\ as\ whitespace}}
+\DoxyCodeLine{00027\ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{char}\ c\ =\ ENTER;\ \ \textcolor{comment}{//\ next\ character\ according\ to\ lookahead}}
+\DoxyCodeLine{00028\ \ \ \ \mbox{\hyperlink{display_8c_ab5ba494b78d178684565f36d7948f8c3}{clearEchoTerm}}();}
+\DoxyCodeLine{00029\ \ \ \ \textcolor{keywordflow}{while}\ (ENTER\ ==\ c)\ \{\ c\ =\ \mbox{\hyperlink{scanner_8c_a65736a84bdb175862ead50e9f7304eca}{nextChar}}();\};}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00031\ \ \ \ \ T\_token\ erg\ =\ \{UNEXPECTED,\ 0\};}
+\DoxyCodeLine{00032\ \ \ \ \textcolor{comment}{//\ analyse\ input\ character}}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordflow}{switch}\ (c)\ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ PLUS:\ \textcolor{keywordflow}{case}\ MINUS:\ \textcolor{keywordflow}{case}\ MULT:\ \ \ \ \textcolor{keywordflow}{case}\ DIV:}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ PRT:\ \ \textcolor{keywordflow}{case}\ SWAP:\ \ \textcolor{keywordflow}{case}\ PRT\_ALL:\ \textcolor{keywordflow}{case}\ DOUBLE:}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ CLEAR:}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ erg.tok\ =\ c;\ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ c\ =\ ENTER;}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'0'}:\ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'1'}:\ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'2'}:\ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'3'}:\ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'4'}:\ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'5'}:\ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'6'}:\ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'7'}:\ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'8'}:\ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'9'}:\ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ erg.tok\ =\ NUMBER;\ \textcolor{comment}{//\ scan\ a\ number}}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ ((\textcolor{charliteral}{'0'}\ <=\ c)\ \&\&\ (c\ <=\ \textcolor{charliteral}{'9'}))\ \{}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{display_8c_acb9d00d18da3afe92a0c55f5b35ce52a}{printToEchoLine}}(c);}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ erg.val\ =\ erg.val\ *\ 10\ +\ (c\ -\/\ \textcolor{charliteral}{'0'});}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (erg.val\ <\ 0)\ \{\ \textcolor{comment}{//\ Overflow\ }}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ erg.tok\ =\ OVERFLOW;}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ erg.val\ =\ 0;}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ erg;}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ c\ =\ \mbox{\hyperlink{scanner_8c_a65736a84bdb175862ead50e9f7304eca}{nextChar}}();}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \textcolor{keywordflow}{default}:\ \textcolor{comment}{//\ unexpected\ input}}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ c\ =\ ENTER;}
+\DoxyCodeLine{00056\ \ \ \ \}\ \ \ \ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordflow}{return}\ erg;}
+\DoxyCodeLine{00058\ \}}
+
+\end{DoxyCode}
+
+
+Referenced by \mbox{\hyperlink{main_8c_source_l00023}{main()}}, and \mbox{\hyperlink{msg__handler_8c_source_l00024}{print\+Number()}}.
+

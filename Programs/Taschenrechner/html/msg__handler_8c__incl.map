@@ -1,0 +1,15 @@
+<map id="Src/msg_handler.c" name="Src/msg_handler.c">
+<area shape="rect" id="Node000001" title="Modul zur Ausgabe von Nachrichten auf den Bildschirm." alt="" coords="262,5,402,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,79,123,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="290,33,121,78,120,73,288,28"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="147,79,226,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="310,33,224,75,221,70,307,28"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="250,79,321,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="327,32,303,69,298,66,322,30"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="345,79,415,104"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="342,30,367,66,362,69,338,33"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="440,79,528,104"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="358,28,448,70,446,75,355,33"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="553,79,637,104"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="375,28,540,73,539,78,374,33"/>
+</map>

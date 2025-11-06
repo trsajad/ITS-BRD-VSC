@@ -1,0 +1,145 @@
+\doxysection{Src/main.c File Reference}
+\hypertarget{main_8c}{}\label{main_8c}\index{Src/main.c@{Src/main.c}}
+
+
+Implementierung eines RPN Taschenrechners über Touch-\/\+Display des ITS-\/\+Boards.  
+
+
+{\ttfamily \#include "{}init.\+h"{}}\newline
+{\ttfamily \#include "{}display.\+h"{}}\newline
+{\ttfamily \#include "{}scanner.\+h"{}}\newline
+{\ttfamily \#include "{}token.\+h"{}}\newline
+{\ttfamily \#include "{}err\+\_\+num.\+h"{}}\newline
+{\ttfamily \#include "{}stack.\+h"{}}\newline
+{\ttfamily \#include "{}operations.\+h"{}}\newline
+{\ttfamily \#include "{}msg\+\_\+handler.\+h"{}}\newline
+Include dependency graph for main.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{main_8c_a840291bc02cba5474a4cb46a9b9566fe}{main}} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static T\+\_\+token \mbox{\hyperlink{main_8c_a1dbbd3d5c4663a973a4306bf505d2abc}{input}} = \{UNEXPECTED, 0\}
+\item 
+static int \mbox{\hyperlink{main_8c_a89f234133d3efe315836311cbf21c64b}{state}} = EOK
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementierung eines RPN Taschenrechners über Touch-\/\+Display des ITS-\/\+Boards. 
+
+\begin{DoxyAuthor}{Author}
+René Rudzki, Sajad Nazari  
+\end{DoxyAuthor}
+
+
+Definition in file \mbox{\hyperlink{main_8c_source}{main.\+c}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{main_8c_a840291bc02cba5474a4cb46a9b9566fe}\label{main_8c_a840291bc02cba5474a4cb46a9b9566fe} 
+\index{main.c@{main.c}!main@{main}}
+\index{main@{main}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{main_8c_source_l00023}{23}} of file \mbox{\hyperlink{main_8c_source}{main.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00024\ \ \ \ \ initITSboard();\ \ \ \ \textcolor{comment}{//\ Initialisierung\ des\ ITS-\/Boards\ \ \ \ }}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{display_8c_a2b00342dede324282512c2d2b17f58b8}{initDisplay}}();\ \ \ \ \textcolor{comment}{//\ Initialisierung\ des\ Displays}}
+\DoxyCodeLine{00026\ \ \ \ \ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{comment}{//\ Ausführung\ in\ Endlosschleife}}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordflow}{while}(1)\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{main_8c_a1dbbd3d5c4663a973a4306bf505d2abc}{input}}\ =\ \mbox{\hyperlink{scanner_8c_af0762539b69857bb47bf0d827c9c0b38}{nextToken}}();}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (\mbox{\hyperlink{main_8c_a1dbbd3d5c4663a973a4306bf505d2abc}{input}}.tok)\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ NUMBER:}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{main_8c_a89f234133d3efe315836311cbf21c64b}{state}}\ =\ \mbox{\hyperlink{stack_8c_a1e033a50a265d54aa80d05aa0b6026b9}{stackPush}}(\mbox{\hyperlink{main_8c_a1dbbd3d5c4663a973a4306bf505d2abc}{input}}.val);\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ OVERFLOW:}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{main_8c_a89f234133d3efe315836311cbf21c64b}{state}}\ =\ OVERFLOW\_ERR;\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ PLUS:\ \textcolor{keywordflow}{case}\ MINUS:\ \textcolor{keywordflow}{case}\ MULT:\ \textcolor{keywordflow}{case}\ DIV:\ \textcolor{keywordflow}{case}\ SWAP:}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{main_8c_a89f234133d3efe315836311cbf21c64b}{state}}\ =\ \mbox{\hyperlink{operations_8c_a64ec48f9aabc5a302f0caf8651e3aef5}{calculate}}(\mbox{\hyperlink{main_8c_a1dbbd3d5c4663a973a4306bf505d2abc}{input}}.tok);\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ DOUBLE:}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{main_8c_a89f234133d3efe315836311cbf21c64b}{state}}\ =\ \mbox{\hyperlink{operations_8c_a2fa6c6844bedee98f28693bdae095772}{duplicate}}();\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ PRT:\ \textcolor{keywordflow}{case}\ PRT\_ALL:}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{display_8c_a24d8dffd81e1a6297ea372b718bb15cd}{clearStdout}}();}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{operations_8c_a107b026d63725bed26ff55d13f77cd46}{printOps}}(\mbox{\hyperlink{main_8c_a1dbbd3d5c4663a973a4306bf505d2abc}{input}}.tok);\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ CLEAR:}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{stack_8c_a22d66993da450d75be66b82c9c9c85c4}{clearStack}}();}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{display_8c_a24d8dffd81e1a6297ea372b718bb15cd}{clearStdout}}();\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ UNEXPECTED:}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{main_8c_a89f234133d3efe315836311cbf21c64b}{state}}\ =\ UNEX\_INPUT\_ERR;}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{main_8c_a89f234133d3efe315836311cbf21c64b}{state}}\ !=\ EOK)\ \{}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{display_8c_a5dd355818a51f3a802cef75b3d0a99dd}{setErrMode}}();}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{msg__handler_8c_a412d2e4ba8d327bfa3184c213904f597}{printMessage}}(\mbox{\hyperlink{main_8c_a89f234133d3efe315836311cbf21c64b}{state}});}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\mbox{\hyperlink{main_8c_a1dbbd3d5c4663a973a4306bf505d2abc}{input}}.tok\ !=\ CLEAR)\ \{\ \mbox{\hyperlink{main_8c_a1dbbd3d5c4663a973a4306bf505d2abc}{input}}\ =\ \mbox{\hyperlink{scanner_8c_af0762539b69857bb47bf0d827c9c0b38}{nextToken}}();\ \}}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{stack_8c_a22d66993da450d75be66b82c9c9c85c4}{clearStack}}();}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{display_8c_aa977481486a9816d8ab1ce12a9a68034}{setNormalMode}}();}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{main_8c_a89f234133d3efe315836311cbf21c64b}{state}}\ =\ EOK;}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00066\ \ \ \ \ \}}
+\DoxyCodeLine{00067\ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{main_8c_a1dbbd3d5c4663a973a4306bf505d2abc}\label{main_8c_a1dbbd3d5c4663a973a4306bf505d2abc} 
+\index{main.c@{main.c}!input@{input}}
+\index{input@{input}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{input}{input}}
+{\footnotesize\ttfamily T\+\_\+token input = \{UNEXPECTED, 0\}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{main_8c_source_l00020}{20}} of file \mbox{\hyperlink{main_8c_source}{main.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00020\ \{UNEXPECTED,\ 0\};}
+
+\end{DoxyCode}
+
+
+Referenced by \mbox{\hyperlink{main_8c_source_l00023}{main()}}, and \mbox{\hyperlink{msg__handler_8c_source_l00024}{print\+Number()}}.
+
+\Hypertarget{main_8c_a89f234133d3efe315836311cbf21c64b}\label{main_8c_a89f234133d3efe315836311cbf21c64b} 
+\index{main.c@{main.c}!state@{state}}
+\index{state@{state}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{state}{state}}
+{\footnotesize\ttfamily int state = EOK\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{main_8c_source_l00021}{21}} of file \mbox{\hyperlink{main_8c_source}{main.\+c}}.
+
+
+
+Referenced by \mbox{\hyperlink{operations_8c_source_l00062}{calculate()}}, \mbox{\hyperlink{operations_8c_source_l00090}{duplicate()}}, \mbox{\hyperlink{main_8c_source_l00023}{main()}}, and \mbox{\hyperlink{operations_8c_source_l00102}{print\+Ops()}}.
+

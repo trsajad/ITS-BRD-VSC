@@ -1,0 +1,158 @@
+\doxysection{Src/msg\+\_\+handler.c File Reference}
+\hypertarget{msg__handler_8c}{}\label{msg__handler_8c}\index{Src/msg\_handler.c@{Src/msg\_handler.c}}
+
+
+Modul zur Ausgabe von Nachrichten auf den Bildschirm.  
+
+
+{\ttfamily \#include "{}msg\+\_\+handler.\+h"{}}\newline
+{\ttfamily \#include "{}display.\+h"{}}\newline
+{\ttfamily \#include "{}limits.\+h"{}}\newline
+{\ttfamily \#include "{}token.\+h"{}}\newline
+{\ttfamily \#include "{}err\+\_\+num.\+h"{}}\newline
+{\ttfamily \#include "{}scanner.\+h"{}}\newline
+Include dependency graph for msg\+\_\+handler.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{msg__handler_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static int \mbox{\hyperlink{msg__handler_8c_a5e566a2884b7d9c103733e1e543566db}{sizeof\+Int}} (int value)
+\item 
+void \mbox{\hyperlink{msg__handler_8c_a4b4109bc8366ebfad179b0d52bca9ac8}{print\+Number}} (int value)
+\item 
+void \mbox{\hyperlink{msg__handler_8c_a412d2e4ba8d327bfa3184c213904f597}{print\+Message}} (int num)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Modul zur Ausgabe von Nachrichten auf den Bildschirm. 
+
+\begin{DoxyAuthor}{Author}
+René Rudzki, Sajad Nazari 
+\end{DoxyAuthor}
+
+
+Definition in file \mbox{\hyperlink{msg__handler_8c_source}{msg\+\_\+handler.\+c}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{msg__handler_8c_a412d2e4ba8d327bfa3184c213904f597}\label{msg__handler_8c_a412d2e4ba8d327bfa3184c213904f597} 
+\index{msg\_handler.c@{msg\_handler.c}!printMessage@{printMessage}}
+\index{printMessage@{printMessage}!msg\_handler.c@{msg\_handler.c}}
+\doxysubsubsection{\texorpdfstring{printMessage()}{printMessage()}}
+{\footnotesize\ttfamily void print\+Message (\begin{DoxyParamCaption}\item[{int}]{num }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{msg__handler_8c_source_l00059}{59}} of file \mbox{\hyperlink{msg__handler_8c_source}{msg\+\_\+handler.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordflow}{switch}\ (num)\ \{}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STACK\_EMPTY:}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{display_8c_a69f1d3d0f0a75e50b51aa067d231caeb}{printStdout}}(\textcolor{stringliteral}{"{}Stack\ leer."{}});\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ OVERFLOW\_ERR:}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{display_8c_a69f1d3d0f0a75e50b51aa067d231caeb}{printStdout}}(\textcolor{stringliteral}{"{}Stack\ Overflow!\(\backslash\)n(Reset\ mit\ C)"{}});\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ UNDERFLOW\_ERR:}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{display_8c_a69f1d3d0f0a75e50b51aa067d231caeb}{printStdout}}(\textcolor{stringliteral}{"{}Stack\ Underflow!\(\backslash\)n(Reset\ mit\ C)"{}});\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ ARITHMETIC\_ERR:}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{display_8c_a69f1d3d0f0a75e50b51aa067d231caeb}{printStdout}}(\textcolor{stringliteral}{"{}Arithmetic\ Overflow!\(\backslash\)n(Reset\ mit\ C)"{}});\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ DIVIDE0\_ERR:}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{display_8c_a69f1d3d0f0a75e50b51aa067d231caeb}{printStdout}}(\textcolor{stringliteral}{"{}Durch\ 0\ geteilt!\(\backslash\)n(So\ moege\ Sie\ der\(\backslash\)nBlitz\ treffen.)"{}});\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ UNEX\_INPUT\_ERR:}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{display_8c_a69f1d3d0f0a75e50b51aa067d231caeb}{printStdout}}(\textcolor{stringliteral}{"{}Unexpected\ Input!\(\backslash\)n(Reset\ mit\ C)"{}});}
+\DoxyCodeLine{00073\ \ \ \ \ \}}
+\DoxyCodeLine{00074\ \}}
+
+\end{DoxyCode}
+
+
+Referenced by \mbox{\hyperlink{main_8c_source_l00023}{main()}}, and \mbox{\hyperlink{operations_8c_source_l00102}{print\+Ops()}}.
+
+\Hypertarget{msg__handler_8c_a4b4109bc8366ebfad179b0d52bca9ac8}\label{msg__handler_8c_a4b4109bc8366ebfad179b0d52bca9ac8} 
+\index{msg\_handler.c@{msg\_handler.c}!printNumber@{printNumber}}
+\index{printNumber@{printNumber}!msg\_handler.c@{msg\_handler.c}}
+\doxysubsubsection{\texorpdfstring{printNumber()}{printNumber()}}
+{\footnotesize\ttfamily void print\+Number (\begin{DoxyParamCaption}\item[{int}]{value }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{msg__handler_8c_source_l00024}{24}} of file \mbox{\hyperlink{msg__handler_8c_source}{msg\+\_\+handler.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{int}\ i\ =\ \mbox{\hyperlink{msg__handler_8c_a5e566a2884b7d9c103733e1e543566db}{sizeofInt}}(value);}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{char}\ str[i];\ i-\/-\/;}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ str[i]\ =\ \textcolor{charliteral}{'\(\backslash\)0'};\ i-\/-\/;}
+\DoxyCodeLine{00029\ \ \ \ \ str[i]\ =\ \textcolor{charliteral}{'\(\backslash\)n'};\ i-\/-\/;}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordflow}{if}\ (value\ ==\ 0)\ \{\ str[0]\ =\ \textcolor{charliteral}{'0'};\ \}}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (value\ <\ 0)\ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (value\ ==\ INT\_MIN)\ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ str[i]\ =\ \textcolor{charliteral}{'8'};}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ value\ =\ value\ /\ 10;}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ i-\/-\/;}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ str[0]\ =\ \textcolor{charliteral}{'-\/'};}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ value\ =\ -\/value;}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (value\ >\ 0)\ \{}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ str[i]\ =\ value\ \%\ 10\ +\ \textcolor{charliteral}{'0'};}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ value\ =\ value\ /\ 10;}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ i-\/-\/;}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00048\ \ \ \ \ \}}
+\DoxyCodeLine{00049\ \ \ \ \ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{display_8c_a95002ad53098168472dcaaf34d2f01f9}{isBottomLine}}())\ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{display_8c_a69f1d3d0f0a75e50b51aa067d231caeb}{printStdout}}(\textcolor{stringliteral}{"{}Mit\ P\ fortfahren..."{}});}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ T\_token\ \mbox{\hyperlink{main_8c_a1dbbd3d5c4663a973a4306bf505d2abc}{input}}\ =\ \mbox{\hyperlink{scanner_8c_af0762539b69857bb47bf0d827c9c0b38}{nextToken}}();}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\mbox{\hyperlink{main_8c_a1dbbd3d5c4663a973a4306bf505d2abc}{input}}.tok\ !=\ PRT\_ALL)\ \{\ \mbox{\hyperlink{main_8c_a1dbbd3d5c4663a973a4306bf505d2abc}{input}}\ =\ \mbox{\hyperlink{scanner_8c_af0762539b69857bb47bf0d827c9c0b38}{nextToken}}();\ \}}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{display_8c_a24d8dffd81e1a6297ea372b718bb15cd}{clearStdout}}();}
+\DoxyCodeLine{00055\ \ \ \ \ \}}
+\DoxyCodeLine{00056\ \ \ \ \ \mbox{\hyperlink{display_8c_a69f1d3d0f0a75e50b51aa067d231caeb}{printStdout}}(str);}
+\DoxyCodeLine{00057\ \}}
+
+\end{DoxyCode}
+
+
+Referenced by \mbox{\hyperlink{operations_8c_source_l00102}{print\+Ops()}}.
+
+\Hypertarget{msg__handler_8c_a5e566a2884b7d9c103733e1e543566db}\label{msg__handler_8c_a5e566a2884b7d9c103733e1e543566db} 
+\index{msg\_handler.c@{msg\_handler.c}!sizeofInt@{sizeofInt}}
+\index{sizeofInt@{sizeofInt}!msg\_handler.c@{msg\_handler.c}}
+\doxysubsubsection{\texorpdfstring{sizeofInt()}{sizeofInt()}}
+{\footnotesize\ttfamily static int sizeof\+Int (\begin{DoxyParamCaption}\item[{int}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{msg__handler_8c_source_l00014}{14}} of file \mbox{\hyperlink{msg__handler_8c_source}{msg\+\_\+handler.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{int}\ count\ =\ 2;\ \ \ \ \textcolor{comment}{//\ Allocate\ for\ '\(\backslash\)n'\ +\ '\(\backslash\)0'}}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordflow}{if}\ (value\ <=\ 0)\ \{\ count++;\ \}\ \ \ \ \textcolor{comment}{//\ Allocate\ for\ '0'\ ||\ '-\/'}}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordflow}{while}\ (value\ !=\ 0)\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ count++;}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ value\ =\ value\ /\ 10;}
+\DoxyCodeLine{00020\ \ \ \ \ \}}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordflow}{return}\ count;}
+\DoxyCodeLine{00022\ \}}
+
+\end{DoxyCode}
+
+
+Referenced by \mbox{\hyperlink{msg__handler_8c_source_l00024}{print\+Number()}}.
+

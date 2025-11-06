@@ -1,6 +1,6 @@
 CompileFlags:
   CompilationDatabase: >-
-    d:\Dokumente\_HAW\Projekte\ITS-BRD-VSC\Programs\Taschenrechner\out\Taschenrechner\ITSboard\Debug
+    /home/lone_puppeteer/Dokumente/HAW-P/ITS-BRD-VSC/Programs/Taschenrechner/out/Taschenrechner/ITSboard/Debug
   Add:
     - '-D_ILP32=1'
     - '-D_USE_STATIC_INLINE=1'
@@ -413,27 +413,27 @@ CompileFlags:
     - '-D__thumb__=1'
     - '-D__ARMCOMPILER_LIBCXX=1'
     - >-
-      -ID:/Dokumente/_HAW/Projekte/ITS-BRD-VSC/Programs/Taschenrechner/../../stm32cubef4/Drivers/CMSIS/Device/ST/STM32F4xx/Include
+      -I/home/lone_puppeteer/Dokumente/HAW-P/ITS-BRD-VSC/Programs/Taschenrechner/../../stm32cubef4/Drivers/CMSIS/Device/ST/STM32F4xx/Include
     - >-
-      -ID:/Dokumente/_HAW/Projekte/ITS-BRD-VSC/Programs/Taschenrechner/../../stm32cubef4/Drivers/CMSIS/Include
+      -I/home/lone_puppeteer/Dokumente/HAW-P/ITS-BRD-VSC/Programs/Taschenrechner/../../stm32cubef4/Drivers/CMSIS/Include
     - >-
-      -ID:/Dokumente/_HAW/Projekte/ITS-BRD-VSC/Programs/Taschenrechner/../../stm32cubef4/Drivers/STM32F4xx_HAL_Driver/Inc
+      -I/home/lone_puppeteer/Dokumente/HAW-P/ITS-BRD-VSC/Programs/Taschenrechner/../../stm32cubef4/Drivers/STM32F4xx_HAL_Driver/Inc
     - >-
-      -ID:/Dokumente/_HAW/Projekte/ITS-BRD-VSC/Programs/Taschenrechner/../../stm32cubef4/Drivers/BSP/STM32F4xx_Nucleo_144
+      -I/home/lone_puppeteer/Dokumente/HAW-P/ITS-BRD-VSC/Programs/Taschenrechner/../../stm32cubef4/Drivers/BSP/STM32F4xx_Nucleo_144
     - >-
-      -ID:/Dokumente/_HAW/Projekte/ITS-BRD-VSC/Programs/Taschenrechner/../../stm32cubef4/Utilities/Fonts
+      -I/home/lone_puppeteer/Dokumente/HAW-P/ITS-BRD-VSC/Programs/Taschenrechner/../../stm32cubef4/Utilities/Fonts
     - >-
-      -ID:/Dokumente/_HAW/Projekte/ITS-BRD-VSC/Programs/Taschenrechner/../../DisplayWaveshare/Inc
+      -I/home/lone_puppeteer/Dokumente/HAW-P/ITS-BRD-VSC/Programs/Taschenrechner/../../DisplayWaveshare/Inc
     - >-
-      -ID:/Dokumente/_HAW/Projekte/ITS-BRD-VSC/Programs/Taschenrechner/../../ITS_BRD_LIB/Utilities/AddFonts
+      -I/home/lone_puppeteer/Dokumente/HAW-P/ITS-BRD-VSC/Programs/Taschenrechner/../../ITS_BRD_LIB/Utilities/AddFonts
     - >-
-      -ID:/Dokumente/_HAW/Projekte/ITS-BRD-VSC/Programs/Taschenrechner/tmp/Taschenrechner.Debug+ITSboard
+      -I/home/lone_puppeteer/Dokumente/HAW-P/ITS-BRD-VSC/Programs/Taschenrechner/tmp/Taschenrechner.Debug+ITSboard
     - >-
-      -ID:/Dokumente/_HAW/Projekte/ITS-BRD-VSC/Programs/Taschenrechner/RTE/_Debug_ITSboard
+      -I/home/lone_puppeteer/Dokumente/HAW-P/ITS-BRD-VSC/Programs/Taschenrechner/RTE/_Debug_ITSboard
+    - '-I/home/lone_puppeteer/.cache/arm/packs/ARM/CMSIS/6.1.0/CMSIS/Core/Include'
     - >-
-      -IC:/Users/drago/AppData/Local/arm/packs/ARM/CMSIS/6.1.0/CMSIS/Core/Include
+      -I/home/lone_puppeteer/.cache/arm/packs/Keil/STM32F4xx_DFP/2.17.1/Drivers/CMSIS/Device/ST/STM32F4xx/Include
     - >-
-      -IC:/Users/drago/AppData/Local/arm/packs/Keil/STM32F4xx_DFP/2.17.1/Drivers/CMSIS/Device/ST/STM32F4xx/Include
+      -I/home/lone_puppeteer/Dokumente/HAW-P/ITS-BRD-VSC/Programs/Taschenrechner/../../ITS_BRD_LIB/Inc
     - >-
-      -ID:/Dokumente/_HAW/Projekte/ITS-BRD-VSC/Programs/Taschenrechner/../../ITS_BRD_LIB/Inc
-    - '-ID:/Dokumente/_HAW/Projekte/ITS-BRD-VSC/Programs/Taschenrechner/Inc'
+      -I/home/lone_puppeteer/Dokumente/HAW-P/ITS-BRD-VSC/Programs/Taschenrechner/Inc

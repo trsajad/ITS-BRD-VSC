@@ -1,0 +1,9 @@
+<map id="Src/stack.c" name="Src/stack.c">
+<area shape="rect" id="Node000001" title="Implementierung eines Stacks (LIFO Queue) als Speicher für den Taschenrechner." alt="" coords="97,5,189,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,79,75,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="128,33,70,73,67,68,125,28"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="99,79,187,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="145,31,145,65,140,65,140,31"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="211,79,293,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="162,28,224,69,221,73,159,33"/>
+</map>
