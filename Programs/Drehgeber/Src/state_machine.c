@@ -41,10 +41,51 @@ static int fsm(char newPhase) {
             }
 
         case 'c':
+            switch (newPhase) {
+                case 'b':
+                    bufPhase = newPhase;
+                    return BACKWARD;
+                
+                case 'c':
+                    return STANDSTILL;
+                
+                case 'd':
+                    bufPhase = newPhase;
+                    return FORWARD;
+                
+                default:
+                    return INTERNAL_ERR;
+            }
 
         case 'd':
+            switch (newPhase) {
+                case 'a':
+                    bufPhase = newPhase;
+                    return FORWARD;
+                
+                case 'c':
+                    bufPhase = newPhase;
+                    return BACKWARD;
+                
+                case 'd':
+                    return STANDSTILL;
+                
+                default:
+                    return INTERNAL_ERR;
+            }
 
         case 's':
+            switch (newPhase) {
+                case 'a': case 'b': case 'c': case 'd':
+                    bufPhase = newPhase;
+                    return STANDSTILL;
+                
+                default:
+                    return INTERNAL_ERR;
+            }
+        
+        default:
+            return INTERNAL_ERR;
     }
 }
 
@@ -57,3 +98,9 @@ int getState(bool in0High, bool in1High) {
     }
     return fsm(phase);
 }
+
+void resetMachine(void) {
+    bufPhase = 's';
+}
+
+// EOF
