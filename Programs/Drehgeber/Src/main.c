@@ -7,20 +7,32 @@
   */
 /* Includes ------------------------------------------------------------------*/
 
+#include "general_def.h"
 #include "init.h"
+#include "operations.h"
 #include "printer.h"
 #include "timer.h"
 
+#define MIN_TIME = 250  // ms
+#define MAX_TIME = 500  // ms
+
 int main(void) {
-  initITSboard();    // Initialisierung des ITS Boards
+  // Initialisierung ITS Board und interne Variabeln
+  initITSboard();
+  int state = EOK;
+  int steps = 0;
+  int stepsOfFrame = 0;
+
+  // Initialisierung LCD mit Text und Ausgabe-Buffern
   initDisplay();
-  char txt[4];
-  txt[1] = 'A';
-  testPrint("0123456789abcdef");
-	initTimer();
-	uint32_t timeStampStart = getTimeStamp();
+  PrintBuffer bufAngle = newBuffer(INIT_ANGLE);
+  PrintBuffer bufSpeed = newBuffer(INIT_SPEED);
+
+  // Initialisierung Timer und Zeitfenster direkt vor super-loop öffnen
+  initTimer();
+	uint32_t frameStart = getTimeStamp();
 	
-	// Test in Endlosschleife
+  // Beginn der super-loop
 	while(1) {
 		
 	}

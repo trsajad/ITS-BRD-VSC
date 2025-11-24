@@ -2,8 +2,8 @@
 #include "LCD_GUI.h"
 #include "lcd.h"
 
-#define INIT_TEXT1  "Winkel          :                Grad"
-#define INIT_TEXT2  "Geschwindigkeit :                Grad/s"
+#define INIT_TEXT1  "Winkel          : 0.0            Grad"
+#define INIT_TEXT2  "Geschwindigkeit : 0.00           Grad/s"
 #define Y_ANGLE     2
 #define Y_SPEED     4
 #define X_TEXT      2
@@ -15,13 +15,6 @@ void initDisplay(void) {
     lcdPrintS(INIT_TEXT1);
     lcdGotoXY(X_TEXT, Y_SPEED);
     lcdPrintS(INIT_TEXT2);
-}
-
-void testPrint(char txt[]) {
-    lcdGotoXY(X_VALUE, Y_SPEED);
-    for (int i = 0; i < (PRINT_SIZE - 1); i++) {
-        lcdPrintC(txt[i]);
-    }
 }
 
 // EOF

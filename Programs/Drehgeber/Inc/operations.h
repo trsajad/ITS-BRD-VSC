@@ -4,21 +4,23 @@
 #include "printer.h"
 #include <stdint.h>
 
-#define NO_POSITION -1
+#define NO_PRINT -1
 
 typedef struct {
     char string[PRINT_SIZE];
-    int position[PRINT_SIZE];
+    int printIndex[PRINT_SIZE];
     int next;
 } PrintBuffer;
 
 double calcTimeFrame(uint32_t start, uint32_t end);
 
-void calcAngle(double steps, PrintBuffer *bufAngle);
+void calcAngle(double steps, char out[]);
 
-void calcSpeed(double stepsOfFrame, double timeFrame, PrintBuffer *bufSpeed);
+void calcSpeed(double stepsOfFrame, double timeFrame, char out[]);
 
-void resetBuffer(void);
+void updateBuffer(PrintBuffer *buffer, char newString[]);
+
+PrintBuffer newBuffer(char initString[]);
 
 #endif /* OPERATIONS_H */
 // EOF
