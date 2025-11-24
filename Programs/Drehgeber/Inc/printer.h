@@ -1,7 +1,7 @@
 #ifndef PRINTER_H
 #define PRINTER_H
 
-#define PRINT_SIZE 15
+#define PRINT_SIZE 15  /* Displayed string size + '\0' */
 
 void initDisplay(void);
 
