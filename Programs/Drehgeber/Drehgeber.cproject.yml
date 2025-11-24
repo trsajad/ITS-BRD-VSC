@@ -172,9 +172,9 @@ project:
     - group: Program/User/Inc
       files:
         - file: ../../ITS_BRD_LIB/Inc/lcd.h
+        - file: Inc/general_def.h
         - file: Inc/state_machine.h
         - file: Inc/printer.h
-        - file: Inc/general_def.h
 
 
     # Benutzerdefinierte Programmdateien

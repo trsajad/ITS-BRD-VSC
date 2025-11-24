@@ -20,6 +20,7 @@ static int fsm(char newPhase) {
                     return BACKWARD;
                 
                 default:
+                    bufPhase = 'e';
                     return INTERNAL_ERR;
             }
 
@@ -37,6 +38,7 @@ static int fsm(char newPhase) {
                     return FORWARD;
                 
                 default:
+                    bufPhase = 'e';
                     return INTERNAL_ERR;
             }
 
@@ -54,6 +56,7 @@ static int fsm(char newPhase) {
                     return FORWARD;
                 
                 default:
+                    bufPhase = 'e';
                     return INTERNAL_ERR;
             }
 
@@ -71,6 +74,7 @@ static int fsm(char newPhase) {
                     return STANDSTILL;
                 
                 default:
+                    bufPhase = 'e';
                     return INTERNAL_ERR;
             }
 
@@ -81,6 +85,7 @@ static int fsm(char newPhase) {
                     return STANDSTILL;
                 
                 default:
+                    bufPhase = 'e';
                     return INTERNAL_ERR;
             }
         

@@ -23,3 +23,5 @@ void testPrint(char txt[]) {
         lcdPrintC(txt[i]);
     }
 }
+
+// EOF
