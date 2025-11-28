@@ -7,28 +7,34 @@
   */
 /* Includes ------------------------------------------------------------------*/
 
-#include "stm32f4xx_hal.h"
+#include "general_def.h"
 #include "init.h"
-#include "LCD_GUI.h"
-#include "LCD_Touch.h"
-#include "lcd.h"
-#include "fontsFLASH.h"
-#include "additionalFonts.h"
-#include "error.h"
+#include "operations.h"
+#include "printer.h"
+#include "timer.h"
 
+#define MIN_TIME = 250  // ms
+#define MAX_TIME = 500  // ms
 
 int main(void) {
-	initITSboard();    // Initialisierung des ITS Boards
-	
-	GUI_init(DEFAULT_BRIGHTNESS);   // Initialisierung des LCD Boards mit Touch
-	TP_Init(false);                 // Initialisierung des LCD Boards mit Touch
+  // Initialisierung ITS Board und interne Variabeln
+  initITSboard();
+  int state = EOK;
+  int steps = 0;
+  int stepsOfFrame = 0;
 
-  // Begruessungstext	
-	lcdPrintlnS("Hallo liebes TI-Labor (c-project)");
+  // Initialisierung LCD mit Text und Ausgabe-Buffern
+  initDisplay();
+  PrintBuffer bufAngle = newBuffer(INIT_ANGLE);
+  PrintBuffer bufSpeed = newBuffer(INIT_SPEED);
+
+  // Initialisierung Timer und Zeitfenster direkt vor super-loop öffnen
+  initTimer();
+	uint32_t frameStart = getTimeStamp();
 	
-	// Test in Endlosschleife
+  // Beginn der super-loop
 	while(1) {
-		HAL_Delay(10000);
+		
 	}
 }
 
