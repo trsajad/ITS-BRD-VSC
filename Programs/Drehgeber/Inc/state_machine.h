@@ -1,9 +1,7 @@
 #ifndef STATE_MACHINE_H
 #define STATE_MACHINE_H
 
-#include <stdbool.h>
-
-int getState(bool in0High, bool in1High);
+int encodeState(int in0State, int in1State);
 
 void resetMachine(void);
 

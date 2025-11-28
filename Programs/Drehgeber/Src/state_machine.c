@@ -94,12 +94,12 @@ static int fsm(char newPhase) {
     }
 }
 
-int getState(bool in0High, bool in1High) {
+int encodeState(int in0State, int in1State) {
     char phase;
-    if (in0High) {
-        phase = (in1High) ? 'c' : 'b';
-    } else /* !in0High */ {
-        phase = (in1High) ? 'd' : 'a';
+    if (in0State) {
+        phase = (in1State) ? 'c' : 'b';
+    } else /* !in0State */ {
+        phase = (in1State) ? 'd' : 'a';
     }
     return fsm(phase);
 }

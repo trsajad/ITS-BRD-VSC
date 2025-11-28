@@ -1,9 +1,10 @@
 #include "printer.h"
 #include "LCD_GUI.h"
+#include "general_def.h"
 #include "lcd.h"
 
-#define INIT_TEXT1  "Winkel          : 0.0            Grad"
-#define INIT_TEXT2  "Geschwindigkeit : 0.00           Grad/s"
+#define INIT_TEXT1  "Winkel          :                Grad"
+#define INIT_TEXT2  "Geschwindigkeit :                Grad/s"
 #define Y_ANGLE     2
 #define Y_SPEED     4
 #define X_TEXT      2
@@ -15,6 +16,32 @@ void initDisplay(void) {
     lcdPrintS(INIT_TEXT1);
     lcdGotoXY(X_TEXT, Y_SPEED);
     lcdPrintS(INIT_TEXT2);
+    resetDisplayValues();
+}
+
+int printAngle(char c, int offset) {
+    if ( (offset < 0) || (offset >= PRINT_SIZE) ) {
+        return INTERNAL_ERR;
+    }
+    lcdGotoXY( (X_VALUE + offset), Y_ANGLE );
+    lcdPrintC(c);
+    return EOK;
+}
+
+int printSpeed(char c, int offset) {
+    if ( (offset < 0) || (offset >= PRINT_SIZE) ) {
+        return INTERNAL_ERR;
+    }
+    lcdGotoXY( (X_VALUE + offset), Y_SPEED );
+    lcdPrintC(c);
+    return EOK;
+}
+
+void resetDisplayValues(void) {
+    lcdGotoXY(X_VALUE, Y_ANGLE);
+    lcdPrintReplS(INIT_ANGLE);
+    lcdGotoXY(X_VALUE, Y_SPEED);
+    lcdPrintReplS(INIT_SPEED);
 }
 
 // EOF

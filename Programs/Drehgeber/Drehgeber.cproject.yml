@@ -173,6 +173,7 @@ project:
       files:
         - file: ../../ITS_BRD_LIB/Inc/lcd.h
         - file: Inc/general_def.h
+        - file: Inc/gpio.h
         - file: Inc/state_machine.h
         - file: Inc/operations.h
         - file: Inc/printer.h
@@ -182,6 +183,7 @@ project:
     - group: Program/User/Src
       files:
         - file: Src/main.c
+        - file: Src/gpio.c
         - file: Src/state_machine.c
         - file: Src/operations.c
         - file: Src/printer.c
