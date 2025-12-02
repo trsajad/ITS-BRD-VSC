@@ -12,7 +12,7 @@ int readGPIOpin(GPIO_TypeDef *GPIOx, int pin) {
     return ( (0x01 << pin) != (GPIOx->IDR & (0x01 << pin)) );
 }
 
-static int setGPIOpin(GPIO_TypeDef *GPIOx, int pin, bool on) {
+int setGPIOpin(GPIO_TypeDef *GPIOx, int pin, bool on) {
     if ( (pin < MIN_GPIO_PIN) || (pin > MAX_GPIO_PIN) ) {
         return INTERNAL_ERR;
     }

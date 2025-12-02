@@ -101,6 +101,8 @@ int main(void) {
     setLEDstate(state);
     setLEDcounter(steps);
     
+    setGPIOpin(LED_STATE, 1, true); // Entspricht D17
+
     int index = bufAngle.printIndex[bufAngle.next];
     if (index != NO_PRINT) {
       
@@ -117,6 +119,7 @@ int main(void) {
       bufSpeed.next++;
     }
 
+    setGPIOpin(LED_STATE, 1, false);  
 
     // Error Handling
     if (error) {
