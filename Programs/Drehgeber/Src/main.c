@@ -55,6 +55,8 @@ int main(void) {
 
   // Beginn der super-loop
 	while(1) {
+    //setGPIOpin(OUTPUT_STATE, OUT10, true);  // Zeitmessung: super-loop (start)
+
 		// Eingabe - Einlesen der Sensoren
     int in0State = readGPIOpin(INPUT, IN0);
     int in1State = readGPIOpin(INPUT, IN1);
@@ -101,7 +103,7 @@ int main(void) {
     setLEDstate(state);
     setLEDcounter(steps);
     
-    setGPIOpin(LED_STATE, 1, true); // Entspricht D17
+    //setGPIOpin(OUTPUT_STATE, OUT11, true);  // Zeitmessung: LCD Ausgabe (start)
 
     int index = bufAngle.printIndex[bufAngle.next];
     if (index != NO_PRINT) {
@@ -119,7 +121,9 @@ int main(void) {
       bufSpeed.next++;
     }
 
-    setGPIOpin(LED_STATE, 1, false);  
+    //setGPIOpin(OUTPUT_STATE, OUT11, false);  // Zeitmessung: LCD Ausgabe (ende)
+    //setGPIOpin(OUTPUT_STATE, OUT10, false);  // Zeitmessung: super-loop (ende)
+
 
     // Error Handling
     if (error) {

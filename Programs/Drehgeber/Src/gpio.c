@@ -30,19 +30,19 @@ static void setGPIOpinMask(GPIO_TypeDef *GPIOx, uint16_t mask) {
 void setLEDstate(int state) {
     switch(state) {
         case FORWARD:
-            setGPIOpin(LED_STATE, D23, true);
-            setGPIOpin(LED_STATE, D22, false);
-            setGPIOpin(LED_STATE, D21, false);
+            setGPIOpin(OUTPUT_STATE, D23, true);
+            setGPIOpin(OUTPUT_STATE, D22, false);
+            setGPIOpin(OUTPUT_STATE, D21, false);
             break;
         case BACKWARD:
-            setGPIOpin(LED_STATE, D23, false);
-            setGPIOpin(LED_STATE, D22, true);
-            setGPIOpin(LED_STATE, D21, false);
+            setGPIOpin(OUTPUT_STATE, D23, false);
+            setGPIOpin(OUTPUT_STATE, D22, true);
+            setGPIOpin(OUTPUT_STATE, D21, false);
             break;
         case INTERNAL_ERR:
-            setGPIOpin(LED_STATE, D23, false);
-            setGPIOpin(LED_STATE, D22, false);
-            setGPIOpin(LED_STATE, D21, true);
+            setGPIOpin(OUTPUT_STATE, D23, false);
+            setGPIOpin(OUTPUT_STATE, D22, false);
+            setGPIOpin(OUTPUT_STATE, D21, true);
             break;
     }
 }
@@ -52,14 +52,14 @@ void setLEDcounter(int steps) {
         steps = -steps;
     }
     uint16_t stepsDisplayed = (steps < UINT8_MAX) ? steps : UINT8_MAX;
-    setGPIOpinMask(LED_COUNT, stepsDisplayed);
+    setGPIOpinMask(OUTPUT_COUNT, stepsDisplayed);
 }
 
 void resetLED(void) {
-    setGPIOpin(LED_STATE, D23, false);
-    setGPIOpin(LED_STATE, D22, false);
-    setGPIOpin(LED_STATE, D21, false);
-    setGPIOpinMask(LED_COUNT, 0x00);
+    setGPIOpin(OUTPUT_STATE, D23, false);
+    setGPIOpin(OUTPUT_STATE, D22, false);
+    setGPIOpin(OUTPUT_STATE, D21, false);
+    setGPIOpinMask(OUTPUT_COUNT, 0x00);
 }
 
 // EOF

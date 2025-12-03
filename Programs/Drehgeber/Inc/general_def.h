@@ -7,12 +7,14 @@
 #define IN1           1
 #define S6            6
 
-#define LED_STATE     GPIOE
+#define OUTPUT_STATE  GPIOE
 #define D21           5
 #define D22           6
 #define D23           7
+#define OUT10         2
+#define OUT11         3
 
-#define LED_COUNT     GPIOD
+#define OUTPUT_COUNT  GPIOD
 
 // Definieren von Zuständen
 #define FORWARD       3
